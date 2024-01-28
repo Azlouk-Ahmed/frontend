@@ -1,13 +1,79 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Poppins:wght@200;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&family=Source+Code+Pro:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300;400;600&family=Poppins:wght@200;300;400;500&family=Source+Code+Pro:wght@300;400;600&display=swap');
+:root {
+  --primary-color : #C778DD;
+  --bg-color : #282C33;
+  --gray-color : #ABB2BF;
+  --main-font : 'Fira Code';
+  color: var(--gray-color);
+  font-family: var(--main-font);
+  background-color: var(--bg-color);
+  font-size: 16px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+html::-webkit-scrollbar-thumb {
+  display: none;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+* {
+  user-select: none;
+}
+
+.error {
+  padding: 10px 2rem;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid red;
+  background: #463232;
+  max-width: 70%;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.error > span,  .validation > span {
+  font-size: 14px;
+}
+.validation {
+  max-width: 70%;
+  align-items: center;
+  margin: 0 auto;
+  padding: 10px 2rem;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid greenyellow;
+  background: #324637;
+}
+
+select {
+  margin: 18px auto;
+  height: 42px;
+  background: var(--bg-color);
+  color: var(--gray-color);
+  font-family: inherit;
+  padding: 0rem 1rem;
+}
+
+option {
+
 }

@@ -1,38 +1,139 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.centered-child {
   min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  overflow-y: scroll;
+  margin-top: 3rem;
+}
+
+.centered-child form {
+  border: 2px solid var(--gray-color);
+  padding: 3rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem
+}
+
+input{
+  background: var(--bg-color);
+  border: 2px var(--gray-color) solid;
+  outline: none;
+  width: 335px;
+  height: 54px;
+  color: var(--gray-color);
+  padding: 0 0 0 14px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+input:focus{
+  border: 2px solid var(--primary-color);
+}
+
+.name--input {
+  position: relative;
+  /* width: 505px; */
+  width: 48%;
+}
+
+label {
+  position: absolute;
+  top: -12px;
+  left: 12px;
+  background: var(--bg-color);
+  padding: 0 10px;
+  text-transform: capitalize;
+}
+
+
+.input {
+  position: relative;
+  display: flex;
+}
+
+button {
+  background: none;
+  color: var(--gray-color);
+  font-family: inherit;
+  border :1px solid var(--gray-color);
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: .5s;
+  font-weight: bold;
+  transition: 0.5s;
+}
+
+.login--btn {
+  margin: 35px auto 0;
+  width: 50%;
+}
+
+button:hover{
+  color: var(--primary-color);
+  border: var(--primary-color) 1px solid;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 46px 0 8px 0px;
+}
+nav .logo {
+  font-weight: bolder;
   color: white;
+  display: flex;
+  align-items: center;
+}
+nav .logo img {
+  width: 35px;
 }
 
-.App-link {
-  color: #61dafb;
+nav ul {
+  display: flex;
+  gap: 10px;
+  text-transform: capitalize;
+  list-style: none;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+nav ul li span {
+  color: var(--primary-color);
+  
+}
+
+.user--info {
+  display: flex;
+  gap: 2rem;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.user--info li {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+.user--info li svg {
+  color: var(--primary-color);
+}
+
+.admin {
+  width: 25px;
+}
+
+table, tr, td{
+  border: 1px solid var(--gray-color);
+  border-collapse: collapse;
+}
+thead, th {
+  border: 1px solid var(--gray-color);
+  color: var(--primary-color);
+
+}
+
+table td {
+  padding: 1rem;
 }
