@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { motion } from "framer-motion";
+import Loading from './Loading';
 
 function ProgPnInterface({...props}) {
   const { user, token } = props.auth;
   const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [loadingAccept, setLoadingAccept] = useState(false);
+  const [loadingDelete, setLoadingDelete] = useState(false);
+
 
   useEffect(() => {
     fetchData();
@@ -11,19 +17,23 @@ function ProgPnInterface({...props}) {
 
   const fetchData = async () => {
     try {
+      setLoading(true);
       const response = await axios.get('http://localhost:5000/api/user/conge', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       setData(response.data);
+      setLoading(false);
     } catch (error) {
       console.error('Error fetching data:', error);
+      setLoading(false);
     }
   };
 
   const handleAccept = async (_id) => {
     try {
+      setLoadingAccept(true);
       await axios.delete(
         `http://localhost:5000/api/user/conge/accept/${_id}`,
         {
@@ -31,29 +41,34 @@ function ProgPnInterface({...props}) {
             Authorization: `Bearer ${token}`,
           },
         }
-      );
+        );
+      setLoadingAccept(false);
       fetchData(); 
     } catch (error) {
       console.error('Error accepting:', error);
+      setLoadingAccept(false);
     }
   };
 
   const handleDelete = async (_id) => {
     try {
+      setLoadingDelete(true)
       await axios.delete(`http://localhost:5000/api/user/conge/decline/${_id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
+      setLoadingDelete(false)
       fetchData(); 
     } catch (error) {
+      setLoadingDelete(false)
       console.error('Error deleting:', error);
     }
   };
 
   return (
     <div className='centered-child'>
-      {data.length>0 && <table>
+      {!loading && <motion.table animate={{x : 0}}  initial={{x: -500}}>
         <thead>
           <tr>
             <th>User Name</th>
@@ -75,14 +90,17 @@ function ProgPnInterface({...props}) {
               <td>{(item.dateFin).slice(0,10)}</td>
               <td>{item.motif}</td>
               <td>
+                <span>
                 <button onClick={() => handleAccept(item._id)}>Accept ~</button>|| 
                 <button onClick={() => handleDelete(item._id)}>Delete X</button>
+
+                </span>
               </td>
             </tr>
           ))}
         </tbody>
-      </table>}
-      {data.length === 0 && <h3>no conge requests</h3>}
+      </motion.table>}
+      {loading && <Loading />}
     </div>
   );
 }

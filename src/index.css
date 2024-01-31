@@ -3,9 +3,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&family=Source+Code+Pro:wght@300;400;600&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;300;400;600&family=Poppins:wght@200;300;400;500&family=Source+Code+Pro:wght@300;400;600&display=swap');
 :root {
-  --primary-color : #C778DD;
-  --bg-color : #282C33;
-  --gray-color : #ABB2BF;
+  --primary-color : #099ae8;
+  --bg-color : #f3f3f3;
+  --gray-color : #424243;
   --main-font : 'Fira Code';
   color: var(--gray-color);
   font-family: var(--main-font);
@@ -45,10 +45,11 @@ a {
   display: flex;
   justify-content: space-between;
   border: 1px solid red;
-  background: #463232;
+  background: #e17f7f;
   max-width: 70%;
   align-items: center;
   margin: 0 auto;
+  color: #f3f3f3;
 }
 
 .error > span,  .validation > span {

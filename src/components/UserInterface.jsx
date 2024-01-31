@@ -52,9 +52,9 @@ function UserInterface({...props}) {
       };
   return (
     <div>
-        <div className="centered-child">
+        <div className="centered-child m-t">
         <form onSubmit={handleSubmit}>
-          <div className="name--input">
+          <div className="name--input ">
             <label htmlFor="type">type</label>
             <input
               type="text"

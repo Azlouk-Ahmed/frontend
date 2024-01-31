@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { motion } from "framer-motion";
 
 function AdminInterface({...props}) {
     const { user, token } = props.auth;
@@ -53,8 +54,9 @@ function AdminInterface({...props}) {
     };
 
   return (
-    <div className='centered-child'>
-      <form onSubmit={handleSubmit}>
+    <div className='centered-child m-t'>
+      <motion.form animate={{x : 0}}  initial={{x: -500}} onSubmit={handleSubmit}>
+        <img width={50} src="https://cdn.dribbble.com/users/2014359/screenshots/6008317/2.gif" />
         <div className="name--input">
           <label htmlFor="email">Email</label>
           <input
@@ -134,7 +136,7 @@ function AdminInterface({...props}) {
         <button type="submit">Submit</button>
         {error&&<div className="error">{error}</div>}
         {validation&&<div className="validation">{validation}</div>}
-      </form>
+      </motion.form>
     </div>
   );
 }
