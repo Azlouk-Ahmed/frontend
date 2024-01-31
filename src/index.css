@@ -57,13 +57,14 @@ a {
 }
 .validation {
   max-width: 70%;
-  align-items: center;
-  margin: 0 auto;
-  padding: 10px 2rem;
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid greenyellow;
-  background: #324637;
+    align-items: center;
+    margin: 0 auto;
+    padding: 10px 2rem;
+    display: flex;
+    color: white;
+    justify-content: space-between;
+    border: 1px solid greenyellow;
+    background: #528c60;
 }
 
 select {

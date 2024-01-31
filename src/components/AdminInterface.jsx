@@ -44,7 +44,7 @@ function AdminInterface({...props}) {
         );
   
         console.log('Form submitted successfully:', response.data);
-        setValidation('Form submitted successfully');
+        setValidation('account created successfully');
         setError("");
       } catch (error) {
         console.log('Error submitting form:',error);

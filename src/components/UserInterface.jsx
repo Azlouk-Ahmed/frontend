@@ -43,10 +43,9 @@ function UserInterface({...props}) {
             dateFin: ''
           });
     
-          setError(false);
         } catch (error) {
-          console.error('Error submitting form:', error.response.data.error);
-          setError(error.response.data.error);
+          console.error('Error submitting form:', error);
+          setError(error.response.data.mssg);
           setValidation("")
         }
       };
@@ -98,13 +97,11 @@ function UserInterface({...props}) {
           {error && (
             <div className="error">
               <span>{error}</span>
-              <span>icon</span>
             </div>
           )}
           {validation && (
             <div className="validation">
               <span>{validation}</span>
-              <span>icon</span>
             </div>
           )}
         </form>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { motion } from "framer-motion";
 import Loading from './Loading';
+import emailjs from 'emailjs-com';
 
 function ProgPnInterface({...props}) {
   const { user, token } = props.auth;
@@ -31,7 +32,7 @@ function ProgPnInterface({...props}) {
     }
   };
 
-  const handleAccept = async (_id) => {
+  const handleAccept = async (_id,userEmail) => {
     try {
       setLoadingAccept(true);
       await axios.delete(
@@ -42,6 +43,15 @@ function ProgPnInterface({...props}) {
           },
         }
         );
+        emailjs.send("service_gct59da", "template_p4bogh4", {
+          message: "votre conge est accepté",
+          email: userEmail,
+          }, 'uzK508LS6nIkpPVW1')
+          .then((result) => {
+            console.log(result);
+          }, (error) => {
+            console.log(error.text);
+        });
       setLoadingAccept(false);
       fetchData(); 
     } catch (error) {
@@ -50,7 +60,7 @@ function ProgPnInterface({...props}) {
     }
   };
 
-  const handleDelete = async (_id) => {
+  const handleDelete = async (_id,userEmail) => {
     try {
       setLoadingDelete(true)
       await axios.delete(`http://localhost:5000/api/user/conge/decline/${_id}`, {
@@ -58,7 +68,16 @@ function ProgPnInterface({...props}) {
           Authorization: `Bearer ${token}`,
         },
       });
-      setLoadingDelete(false)
+      setLoadingDelete(false);
+      emailjs.send("service_gct59da", "template_p4bogh4", {
+        message: "votre conge n'est pas accepté",
+        email: userEmail,
+        }, 'uzK508LS6nIkpPVW1')
+        .then((result) => {
+          console.log(result);
+        }, (error) => {
+          console.log(error.text);
+      });
       fetchData(); 
     } catch (error) {
       setLoadingDelete(false)
@@ -91,8 +110,8 @@ function ProgPnInterface({...props}) {
               <td>{item.motif}</td>
               <td>
                 <span>
-                <button onClick={() => handleAccept(item._id)}>Accept ~</button>|| 
-                <button onClick={() => handleDelete(item._id)}>Delete X</button>
+                <button onClick={() => handleAccept(item._id,item.user.email)}>Accept ~</button>|| 
+                <button onClick={() => handleDelete(item._id,item.user.email)}>Delete X</button>
 
                 </span>
               </td>
